@@ -1,0 +1,47 @@
+{
+  "name": "walkme",
+  "version": "1.0.0",
+  "description": "walk me for web applications",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js",
+    "watch:server": "nodemon start.js",
+    "watch:client": "webpack --watch --progress",
+    "watch": "concurrently npm:watch:server npm:watch:client",
+    "build": "SET NODE_ENV=production & webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "walkme",
+    "javascript"
+  ],
+  "author": "Goutham Tupakula",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^3.5.17",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "rxjs": "^6.5.3",
+    "serialize-javascript": "^2.1.0",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.6.2",
+    "babel-loader": "^8.0.6",
+    "concurrently": "^4.1.2",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "redux-devtools-extension": "^2.13.8",
+    "webpack": "^4.40.2",
+    "webpack-bundle-analyzer": "^3.5.1",
+    "webpack-cli": "^3.3.9"
+  }
+}
