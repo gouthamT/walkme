@@ -17,7 +17,7 @@ if (!dev) {
 
 module.exports = {
   mode: dev ? "development" : "production",
-  context: path.join(__dirname, "client"),
+  context: path.join(__dirname, "../client"),
   devtool: dev ? "none" : "source-map",
   entry: {
     client: "./index.js"
@@ -32,7 +32,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, "public/"),
+    path: path.resolve(__dirname, "../public/"),
     filename: "[name].js",
     globalObject: "this"
   },

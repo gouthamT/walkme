@@ -8,7 +8,14 @@
     "watch:server": "nodemon start.js",
     "watch:client": "webpack --watch --progress",
     "watch": "concurrently npm:watch:server npm:watch:client",
-    "build": "SET NODE_ENV=production & webpack --config webpack.config.js"
+    "build:core": "webpack --config build-config/core.js",
+    "build:view": "SET NODE_ENV=production & webpack --config build-config/client.js",
+    "prebuild:client":"npm run build:view",
+    "build:client": "SET NODE_ENV=production & webpack --config build-config/server.js",
+    "prebuild:all": "npm run build:core",
+    "build:all": "npm run build:client",
+    "prepack": "npm run build:all",
+    "pack": "cd ./public && npm pack"
   },
   "keywords": [
     "walkme",
@@ -21,6 +28,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "jquery": "^3.4.1",
+    "open": "^6.4.0",
     "popper.js": "^1.15.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -37,11 +45,15 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.6.2",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "concurrently": "^4.1.2",
+    "copy-webpack-plugin": "^5.0.4",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "redux-devtools-extension": "^2.13.8",
     "webpack": "^4.40.2",
     "webpack-bundle-analyzer": "^3.5.1",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.9",
+    "webpack-node-externals": "^1.7.2"
   }
 }

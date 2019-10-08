@@ -38,7 +38,7 @@ async function defaultView(req, res) {
       <script>
           window.REDUX_DATA = ${ serialize(store.getState(), { isJSON: true })}
       </script>
-      <script src="public/scripts/client.js"></script>
+      <script src="public/client.js"></script>
     </body>
   </html>`);
 }

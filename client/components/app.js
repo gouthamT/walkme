@@ -10,6 +10,7 @@ function App() {
   useEffect(() => { }, [links]);
 
   async function onWalkme(data) {
+    setCurrentPath('');
     let { targetUrl, commands } = await fetch('/api/walkme', {
       method: 'POST',
       mode: 'cors',
@@ -25,11 +26,13 @@ function App() {
 
     setCurrentPath(targetUrl);
     setCommands(commands);
+    window.history.pushState(null, data.name, `${window.location.origin}/${data.name}`);
   };
 
   function reset() {
     setCurrentPath('');
     setCommands({});
+    window.history.pushState(null, 'Home', `${window.location.origin}`);
   }
 
   function onLoad() {
@@ -42,7 +45,9 @@ function App() {
       {
         links && links.length > 0 &&
         links.map(link =>
-          <Anchor key={link.fullPath} onClick={() => { onWalkme(link); }}>{link.name}</Anchor>)
+          <Anchor key={link.fullPath} onClick={() => {
+            onWalkme(link);
+          }}>{link.name}</Anchor>)
       }
     </SideNav>
     <Content>

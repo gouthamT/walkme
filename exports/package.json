@@ -1,0 +1,23 @@
+{
+  "name": "walkme",
+  "version": "1.0.0",
+  "description": "walkme is a javascript package for writing workflows/walkthroughs/enriched readme.",
+  "main": "startWalkme.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gouthamT/walkme.git"
+  },
+  "keywords": [
+    "walkme",
+    "goutham",
+    "walkthrough",
+    "enriched readme"
+  ],
+  "author": "Goutham Tupakula",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gouthamT/walkme/issues"
+  },
+  "homepage": "https://github.com/gouthamT/walkme#readme"
+}

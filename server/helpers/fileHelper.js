@@ -10,7 +10,7 @@ async function getFilesInfo(targetDirectory) {
   let result = [];
   files.forEach(function (file) {
     if (file.isFile() && WalkMeFileMatchCase.test(file.name))
-      result.push({ name: file.name, directory: targetDirectory, fullPath: `${targetDirectory}\\${file.name}` });
+      result.push({ name: file.name, directory: targetDirectory, fullPath: `..\\..\\testfolder\\${file.name}` });
   });
   return result;
 }
@@ -26,8 +26,18 @@ async function getAllMatchingWalkMeInResponse(req, res) {
 }
 
 async function readWalkMeFile(req, res) {
-  const { name } = req.body,
-    targetJs = await import(`${TargetFolder}\\${name}`);
+  const { fullPath } = req.body;
+  let targetJs;
+
+  try {
+    console.log(`fetch started for ${fullPath} ****`);
+    targetJs = await import(fullPath);
+  } catch (e) {
+    console.log(`fetch file --> ${fullPath} <-- failed ****`);
+    console.error(e);
+  } finally {
+    console.log(`fetch file --> ${fullPath} <-- completed ****`);
+  }
   walkMe.reset();
   targetJs && targetJs.default && typeof targetJs.default === "function" && targetJs.default();
   const mappedData = walkMe.get().flatMap(x => { return { index: x[0], ...x[1] }; }),

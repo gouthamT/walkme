@@ -1,7 +1,9 @@
 import { join } from 'path';
 
+const PublicPath = process.env.NODE_ENV !== "production" ? '../../public' : './';
+
 const optionsToPublicFiles = {
-  root: join(__dirname, '../../public'),
+  root: join(__dirname, PublicPath),
   dotfiles: 'deny',
   headers: {
     'x-timestamp': Date.now(),
@@ -13,7 +15,6 @@ function publicFiles(req, res, next) {
   let fileName = req.params[0];
   res.sendFile(fileName, optionsToPublicFiles, function (err) {
     if (err) {
-      console.error(err)
       next(err)
     } else {
       console.log('Sent:', fileName)

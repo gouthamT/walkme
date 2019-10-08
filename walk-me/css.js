@@ -7506,12 +7506,12 @@ main iframe {
   overflow: auto; }
 
 .topping-modal .modal-content {
-  width: 75vw !important;
-  height: 65vw !important; }
+  width: 50vw !important;
+  height: 50vh !important; }
 
 .topping-modal #topping-tree-container svg {
-  width: 65vw !important;
-  height: 60vh !important; }
+  width: 47vw !important;
+  height: 35vh !important; }
 
 /*d3*/
 .node {
